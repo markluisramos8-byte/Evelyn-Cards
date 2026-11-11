@@ -377,7 +377,7 @@ label.field {
 }
 
 .flip {
-  perspective: 1200px;
+  perspective: 1000px;
   width: 100%;
   min-height: 320px;
   cursor: pointer;
@@ -387,13 +387,14 @@ label.field {
   font: inherit;
   color: inherit;
   text-align: center;
+  display: block;
 }
 
 .flip-inner {
   position: relative;
   width: 100%;
   min-height: 320px;
-  transition: transform 0.5s cubic-bezier(0.3, 0.7, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
 }
 
@@ -408,36 +409,39 @@ label.field {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   padding: 24px;
   border-radius: 28px;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  background: #ffffff;
+  border: 3px solid var(--pink-200);
   box-shadow: var(--shadow);
   font-size: 1.3rem;
   font-weight: 800;
   line-height: 1.35;
+  color: var(--ink);
   overflow-wrap: anywhere;
   white-space: pre-wrap;
-  overflow-y: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Disable overflow-y inside 3D card context to prevent WebKit collapsing */
+  overflow: hidden; 
 }
 
 .face .tag {
   font-size: 0.75rem;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--pink-500);
 }
 
 .face.front {
-  background: #fff;
-  border: 3px solid var(--pink-200);
+  transform: rotateY(0deg);
 }
 
 .face.back {
-  background: linear-gradient(160deg, var(--pink-200), var(--pink-100));
-  border: 3px solid var(--pink-300);
   transform: rotateY(180deg);
+  border-color: var(--pink-300);
 }
 
 .tap-hint {
